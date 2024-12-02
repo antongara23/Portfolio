@@ -99,7 +99,7 @@ start_date = datetime(1990, 1, 1)  # Start date
 end_date = datetime(2024, 1, 1)  # End date
 
 
-with open("test_data_2test.sql", "w", encoding="utf-8") as f:
+with open("test_data_2.sql", "w", encoding="utf-8") as f:
     f.write('INSERT INTO "aircraft" ("ac_serial_number", "reg_num", '
             '"airline_id", "ac_type", "ac_flight_cycles", '
             '"next_check_fc", "ac_flight_hours", "next_check_fh", '
