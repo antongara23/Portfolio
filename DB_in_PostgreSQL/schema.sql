@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS  "airlines" (
     CONSTRAINT "check_arl_status" CHECK ("arl_status" = 'closed' OR "date_closed" IS NULL)
 );
 
--- Represent Aircraft Maintenance Programm (AMP)
+-- Represent Aircraft Maintenance Program (AMP)
 CREATE TABLE IF NOT EXISTS "maintenance_program" (
 	"id" SERIAL PRIMARY KEY,
 	"identifier" VARCHAR(128) NOT NULL UNIQUE,
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS "maintenance_checks" (
 	CONSTRAINT "interval_check" CHECK ("interval_fc" IS NOT NULL OR "interval_fh" IS NOT NULL)
 );
 
--- Represent techniacal records of completed maintenance on the aircraft
+-- Represent technical records of completed maintenance on the aircraft
 CREATE TABLE IF NOT EXISTS "maintenance_records" (
 	"id" SERIAL PRIMARY KEY,
 	"ac_id" INTEGER NOT NULL,
