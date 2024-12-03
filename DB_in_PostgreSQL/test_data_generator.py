@@ -36,6 +36,7 @@ def aircraft(ac_number):
           f"{FC}, {next_check_FC}, {FH}, {next_check_FH}, {amp_id})")
     return query_lines
 
+
 def random_date(start_date, end_date):
     # Calculate the difference in days between the start and end dates
     delta = end_date - start_date
