@@ -1,0 +1,756 @@
+@media (min-width: 600px) {
+  body {
+    height: 100%;
+    margin: 0;
+  }
+  .navbar-container {
+    display: flex;
+    background-color: white;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  .navbar-container .navbar-expand-sm {
+    margin-left: auto;
+  }
+  .navbar-container .dropdown-toggle {
+    border: none;
+  }
+  .container {
+    background-color: white;
+    padding: 0px;
+  }
+  .main-navbar div {
+    background-color: ghostwhite;
+  }
+  .grid-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+  .grid-container .left-column, .grid-container .right-column {
+    flex: 1;
+    min-width: 20%;
+    height: 100%;
+    border-right: 2px solid white;
+    border-left: 2px solid white;
+  }
+  .grid-container .center-column {
+    height: 100%;
+    width: 60%;
+    background-color: white;
+  }
+  .grid-container .center-column .container {
+    background-color: ghostwhite;
+    border: 2px solid white;
+    border-radius: 26px;
+  }
+  .grid-container .center-column .container #profile-navbar {
+    border: 2px solid white;
+    border-radius: 26px;
+  }
+  #login-page, #register-page {
+    position: relative;
+    margin: auto;
+    width: 40%;
+    min-width: 600px;
+    padding: 10px;
+  }
+  #ads-block {
+    background-color: white;
+    padding: 20px;
+    padding-top: 0px;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  #ads-block #instrument {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: end;
+  }
+  #ads-block #instrument #orderby {
+    margin: 10px;
+    justify-self: right;
+  }
+  #ads-block #instrument #show-filter {
+    margin: 10px;
+    justify-self: left;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    font-weight: bold;
+  }
+  #ads-block #ads {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  }
+  .ad-post {
+    background-color: ghostwhite;
+    border: 1px solid black;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .ad-post div {
+    padding: 5px;
+    padding-right: 10px;
+    font-size: 18px;
+  }
+  .ad-post .ads-title {
+    text-transform: capitalize;
+    font-size: 24px;
+  }
+  .ad-post .ads-title:hover {
+    font-size: 26px;
+    cursor: pointer;
+  }
+  .ad-post .ads-description {
+    text-indent: 10px;
+  }
+  .ad-post .ads-price {
+    text-indent: 10px;
+    font-weight: bold;
+  }
+  .ad-post .ads-creation {
+    font-size: 14px;
+    padding: 0px;
+    text-align: right;
+  }
+  .ad-post .no-image {
+    width: 280px;
+    height: 157px;
+    margin: 10px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #profile-saved .ad-post, #profile-ads .ad-post {
+    margin: 20px;
+    width: auto;
+    max-width: 100%;
+  }
+  .users-post {
+    background-color: lightblue;
+  }
+  #profile-navbar {
+    background-color: ghostwhite;
+  }
+  #profile-navbar span {
+    font-size: 16px;
+    color: white;
+    background-color: grey;
+    border-radius: 4px 4px 4px 4px;
+    padding: 4px;
+  }
+  #profile-navbar button {
+    margin: 10px;
+    transition: none;
+    outline: none;
+    border: none;
+  }
+  .dropdown-toggle {
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .dropdown-menu {
+    margin: 0px;
+    padding: 0px;
+  }
+  .dropdown-menu button {
+    border: 0px solid black;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .not-active div {
+    background-color: lightgrey;
+    color: grey;
+  }
+  @keyframes show {
+    0% {
+      opacity: 0;
+      height: 0px;
+    }
+    40% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      height: 350px;
+    }
+  }
+  @keyframes hide {
+    0% {
+      opacity: 1;
+      height: 350px;
+    }
+    40% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+      height: 0px;
+    }
+  }
+  #filter-block {
+    opacity: 0;
+    border: 1px solid black;
+    border-radius: 26px;
+    padding: 10px;
+    margin-bottom: 10px;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+  }
+  .non-active-ad {
+    background-color: lightgrey;
+  }
+  .non-active-ad div {
+    color: lightgrey;
+  }
+  .non-active-ad .ad-price {
+    display: none;
+  }
+  #ad-block {
+    padding: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  #ad-block .ad-subblock {
+    background-color: ghostwhite;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 16px;
+    padding: 10px;
+  }
+  #ad-block #ad-content {
+    padding: 20px;
+  }
+  #ad-block #ad-content .ad-attributes {
+    display: flex;
+  }
+  #ad-block #ad-content .ad-attributes .ad-attr {
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px;
+  }
+  #ad-block #ad-content .ad-title {
+    font-size: 30px;
+  }
+  #ad-block #ad-content .ad-description {
+    padding: 20px;
+  }
+  #ad-block #ad-content .ad-price {
+    padding: 10px;
+  }
+  #ad-block #ad-contact {
+    padding: 20px;
+  }
+  #ad-block #ad-contact .contact-form {
+    padding: 20px;
+    border-radius: 26px;
+  }
+  #ad-block #ad-contact #author {
+    display: flex;
+    font-weight: bold;
+  }
+  #ad-block #ad-contact #author div {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+  #ad-block #ad-contact #message-text {
+    margin: 20px;
+    border: 1px solid black;
+    border-radius: 26px;
+    padding: 20px;
+    width: 600px;
+    height: 100px;
+  }
+  .userdata {
+    background-color: ghostwhite;
+    border: 1px solid black;
+    border-radius: 16px;
+    margin: 20px;
+    padding: 20px;
+    width: auto;
+  }
+  .userdata div {
+    margin: 10px;
+  }
+  #profile-dialogs .dialog {
+    background-color: ghostwhite;
+    border: 1px solid black;
+    border-radius: 16px;
+    margin: 20px;
+    padding: 20px;
+    width: auto;
+  }
+  #profile-dialogs .dialog .dialog-header {
+    display: flex;
+  }
+  #profile-dialogs .dialog .dialog-header .dialog-ad-price {
+    font-weight: bold;
+  }
+  #profile-dialogs .dialog .dialog-header > div {
+    margin-right: 20px;
+  }
+  #profile-dialogs .dialog .dialog-header:hover {
+    font-size: 26px;
+    cursor: pointer;
+  }
+  #profile-dialogs .dialog .dialog-newmsg {
+    color: red;
+  }
+  #profile-dialogs .dialog .dialog-lastmsg {
+    margin: 20px;
+    margin-left: 20px;
+    font-size: 18px;
+    font-style: italic;
+  }
+  #profile-dialogs .dialog .dialog-datetime {
+    font-size: 14px;
+    padding: 0px;
+  }
+  #profile-dialog {
+    margin: 5px auto;
+    width: 80%;
+  }
+  #profile-dialog #messages {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 26px;
+  }
+  #profile-dialog #messages .dialog-info {
+    font-size: 24px;
+    padding: 20px;
+  }
+  #profile-dialog #messages #dialog-update {
+    margin: 20px;
+  }
+  #profile-dialog #messages .message {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 26px;
+  }
+  #profile-dialog #messages .message .message-author {
+    font-size: 18px;
+  }
+  #profile-dialog #messages .message .message-text {
+    margin: 10px;
+  }
+  #profile-dialog #messages .message .message-creation-date {
+    font-size: 14px;
+  }
+  #profile-dialog #messages .user-message {
+    align-self: flex-end;
+    background-color: lightblue;
+  }
+  #profile-dialog #messages .not-user-message {
+    align-self: flex-start;
+    background-color: white;
+  }
+  #profile-dialog #new-message {
+    margin: 20px;
+    padding: 20px;
+  }
+  #profile-dialog #new-message #new-message-form {
+    display: flex;
+    flex-direction: column;
+  }
+  #profile-dialog #new-message #new-message-form #id_text {
+    border: 1px solid black;
+    border-radius: 26px;
+    padding: 20px;
+    width: 600px;
+    height: 100px;
+  }
+  #profile-dialog #new-message #new-message-form #send-message {
+    align-self: flex-end;
+  }
+  #create-block {
+    margin: 20px;
+  }
+  #create-block form div {
+    margin: 20px;
+  }
+  .page-pagination {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .page-pagination span {
+    color: black;
+  }
+  #create-form {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 26px;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  #create-form form th {
+    text-align: right;
+    padding-right: 10px;
+  }
+  #create-form form td {
+    padding-left: 10px;
+  }
+  #create-form input[type=submit] {
+    margin-top: 10px;
+  }
+}
+@media (max-width: 599px) {
+  body {
+    height: 100%;
+    margin: 0;
+  }
+  .navbar-container {
+    display: flex;
+    background-color: white;
+  }
+  .navbar-container .navbar-expand-sm {
+    margin-left: auto;
+  }
+  .navbar-container .dropdown-toggle {
+    border: none;
+  }
+  .container {
+    background-color: white;
+    padding: 0px;
+  }
+  .main-navbar div {
+    background-color: ghostwhite;
+  }
+  .grid-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+  .grid-container .center-column {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+  }
+  .grid-container .center-column .container {
+    background-color: ghostwhite;
+    border: 2px solid white;
+    border-radius: 8px;
+  }
+  .grid-container .center-column .container #profile-navbar {
+    border: 2px solid white;
+    border-radius: 8px;
+  }
+  #ads-block {
+    background-color: white;
+    padding: 5px;
+    padding-top: 0px;
+  }
+  #ads-block #instrument {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: end;
+  }
+  #ads-block #instrument #orderby {
+    margin: 5px;
+    justify-self: right;
+  }
+  #ads-block #instrument #orderby button {
+    background-color: ghostwhite;
+  }
+  #ads-block #instrument #show-filter {
+    margin: 5px;
+    justify-self: left;
+    background-color: ghostwhite;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+  #orderby button {
+    background-color: ghostwhite;
+  }
+  .ad-post {
+    background-color: ghostwhite;
+    border-bottom: 2px solid grey;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .ad-post div {
+    padding: 5px;
+    font-size: 14px;
+  }
+  .ad-post .ads-title {
+    text-transform: capitalize;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .ad-post .ads-description {
+    text-indent: 0px;
+  }
+  .ad-post .ads-price {
+    text-indent: 0px;
+    font-weight: bold;
+  }
+  .ad-post .ads-creation {
+    font-size: 14px;
+    padding: 0px;
+    text-align: right;
+  }
+  .ad-post .no-image {
+    display: none;
+  }
+  #profile-saved .ad-post, #profile-ads .ad-post {
+    margin: 0px;
+    width: auto;
+    max-width: 100%;
+  }
+  .users-post {
+    background-color: lightblue;
+  }
+  .main-navbar {
+    background-color: ghostwhite;
+  }
+  .main-navbar div {
+    background-color: ghostwhite;
+  }
+  #profile-navbar {
+    background-color: ghostwhite;
+    padding: 5px;
+  }
+  #profile-navbar span {
+    font-size: 14px;
+    color: white;
+    background-color: grey;
+    border-radius: 4px 4px 4px 4px;
+    padding: 4px;
+  }
+  #profile-navbar button {
+    padding: 5px;
+    margin: 0px;
+    transition: none;
+    outline: none;
+    border: none;
+  }
+  .dropdown-toggle {
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .dropdown-menu {
+    margin: 0px;
+    padding: 0px;
+  }
+  .dropdown-menu button {
+    border: 0px solid black;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .not-active div {
+    background-color: lightgrey;
+    color: grey;
+  }
+  @keyframes show {
+    0% {
+      opacity: 0;
+      height: 0px;
+    }
+    40% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      height: 350px;
+    }
+  }
+  @keyframes hide {
+    0% {
+      opacity: 1;
+      height: 350px;
+    }
+    40% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+      height: 0px;
+    }
+  }
+  #filter-block {
+    opacity: 0;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 10px;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+  }
+  .non-active-ad {
+    background-color: lightgrey;
+  }
+  .non-active-ad div {
+    color: lightgrey;
+  }
+  .non-active-ad .ad-price {
+    display: none;
+  }
+  #ad-block {
+    padding: 5px;
+  }
+  #ad-block .ad-subblock {
+    background-color: ghostwhite;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 5px;
+  }
+  #ad-block #ad-content .ad-attributes {
+    display: flex;
+  }
+  #ad-block #ad-content .ad-attributes .ad-attr {
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px;
+  }
+  #ad-block #ad-content .ad-title {
+    font-size: 30px;
+  }
+  #ad-block #ad-content .ad-description {
+    padding: 5px;
+  }
+  #ad-block #ad-content .ad-price {
+    padding: 5px;
+  }
+  #ad-block #ad-contact .contact-form {
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .message, #new-message {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 0px;
+    border-radius: 5px;
+  }
+  #message-text {
+    border-radius: 8px;
+  }
+  .userdata {
+    background-color: ghostwhite;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin: 0px;
+    padding: 5px;
+    width: auto;
+  }
+  .userdata div {
+    margin: 10px;
+  }
+  #profile-dialogs .dialog {
+    background-color: ghostwhite;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin: 0px;
+    padding: 5px;
+    width: auto;
+  }
+  #profile-dialogs .dialog .dialog-header {
+    display: flex;
+  }
+  #profile-dialogs .dialog .dialog-header .dialog-ad-price {
+    font-weight: bold;
+  }
+  #profile-dialogs .dialog .dialog-header > div {
+    margin-right: 20px;
+  }
+  #profile-dialogs .dialog .dialog-header:hover {
+    cursor: pointer;
+  }
+  #profile-dialogs .dialog .dialog-newmsg {
+    color: red;
+  }
+  #profile-dialogs .dialog .dialog-lastmsg {
+    margin: 0px;
+    margin-left: 20px;
+    font-size: 14px;
+    font-style: italic;
+  }
+  #profile-dialogs .dialog .dialog-datetime {
+    font-size: 14px;
+    padding: 0px;
+  }
+  #profile-dialog #messages {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 8px;
+  }
+  #profile-dialog #messages .dialog-info {
+    font-size: 18px;
+    padding: 5px;
+  }
+  #profile-dialog #messages #dialog-update {
+    margin: 0px;
+  }
+  #profile-dialog #messages .message {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 8px;
+  }
+  #profile-dialog #messages .message .message-author {
+    font-size: 14px;
+  }
+  #profile-dialog #messages .message .message-text {
+    margin: 5px;
+  }
+  #profile-dialog #messages .message .message-creation-date {
+    font-size: 14px;
+  }
+  #profile-dialog #messages .user-message {
+    background-color: lightblue;
+  }
+  #profile-dialog #messages .not-user-message {
+    background-color: white;
+  }
+  #profile-dialog #new-message {
+    margin: 0px;
+    padding: 5px;
+  }
+  #profile-dialog #new-message #new-message-form {
+    display: flex;
+    flex-direction: column;
+  }
+  #profile-dialog #new-message #new-message-form #id_text {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 5px;
+    width: 400px;
+    height: 100px;
+  }
+  #profile-dialog #new-message #new-message-form #send-message {
+    align-self: flex-end;
+  }
+  #create-block {
+    margin: 0px;
+  }
+  #create-block form div {
+    margin: 0px;
+  }
+  .page-pagination {
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .page-pagination span {
+    color: black;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

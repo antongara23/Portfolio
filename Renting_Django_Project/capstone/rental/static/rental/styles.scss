@@ -1,0 +1,944 @@
+@media (min-width: 600px) {
+
+$margin-std: 20px;
+$margin-sm: 10px;
+$padding-std: 20px;
+$padding-sm: 10px;
+$font-size: 20px;
+$font-size-block-title: 24px;
+$font-size-block-inner: 18px;
+$font-size-datetime: 14px;
+$font-size-span: 16px;
+$indentation: 10px;
+
+$theme-color: ghostwhite;
+$bgcolor: ghostwhite;
+$bgcolor-profile: khaki;
+$border-color: black;
+$ad-post-color: ghostwhite;
+$page-color: white;
+$userpostbg: lightblue;
+$notactive: lightgrey;
+
+$border-radius-sm: 16px;
+$border-radius-bg: 26px;
+$deactivated-ad: grey;
+
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.navbar-container {
+    display: flex;
+    background-color: white;
+    margin-left: 20%;
+    margin-right: 20%;
+    .navbar-expand-sm {
+        margin-left: auto;
+    }
+    .dropdown-toggle {
+        border: none;
+    }
+}
+
+.container {
+    background-color: $page-color;
+    padding: 0px;
+}
+
+.main-navbar div {
+    background-color: $theme-color;
+}
+
+.grid-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    .left-column, .right-column {
+        flex: 1;
+        min-width: 20%;
+        height: 100%;
+        border-right: 2px solid white;
+        border-left: 2px solid white;
+    }
+    .center-column {
+        height: 100%;
+        width: 60%;
+        background-color: white;
+        .container {
+            background-color: $bgcolor;
+            border: 2px solid white;
+            border-radius: $border-radius-bg;
+            #profile-navbar {
+                border: 2px solid white;
+                border-radius: $border-radius-bg;
+            }
+        }
+    }
+}
+
+#login-page, #register-page {
+    position: relative;
+    margin: auto;
+    width: 40%;
+    min-width: 600px;
+    padding: 10px;
+}
+
+#ads-block {
+    background-color: $page-color;
+    padding: $padding-std;
+    padding-top: 0px;
+    margin-left: 10%;
+    margin-right: 10%;
+
+    #instrument {
+        display: grid;
+        //grid-column-gap: 20px;
+        grid-template-columns: auto auto;
+        justify-content: end;
+        #orderby {
+            margin: $margin-sm;
+            justify-self: right;
+            button {
+                //background-color: $bgcolor;
+            }
+        }
+        #show-filter {
+            margin: $margin-sm;
+            justify-self: left;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: white;
+            font-weight: bold;
+        }
+    }
+    #ads {
+        display: grid;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+    }
+}
+
+.ad-post {
+    background-color: $theme-color;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-sm;
+    padding: $padding-std;
+    div {
+        padding: 5px;
+        padding-right: 10px;
+        font-size: $font-size-block-inner;
+    }
+    .ads-title {
+        text-transform: capitalize;
+        font-size: $font-size-block-title;
+    }
+    .ads-title:hover {
+        font-size: 26px;
+        cursor: pointer;
+    }
+    .ads-description{
+        text-indent: $indentation;
+    }
+    .ads-price {
+        text-indent: $indentation;
+        font-weight: bold;
+    }
+    .ads-creation {
+        font-size: $font-size-datetime;
+        padding: 0px;
+        text-align: right;
+    }
+    .ads-save {
+    }
+    .no-image {
+       width: 280px;
+       height: 157px;
+       margin: $margin-sm;
+       background-color: white;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+    }
+}
+
+#profile-saved .ad-post, #profile-ads .ad-post {
+    margin: $margin-std;
+    width: auto;
+    max-width: 100%;
+}
+
+.users-post {
+    background-color: $userpostbg;
+}
+
+
+#profile-navbar {
+    background-color: $theme-color;
+
+    span {
+        font-size: $font-size-span;
+        color: white;
+        background-color: grey;
+        border-radius: 4px 4px 4px 4px;
+        padding: 4px;
+        }
+    button {
+        margin: $margin-sm;
+        transition: none;
+        outline: none;
+        border: none;
+    }
+}
+
+.dropdown-toggle {
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: $page-color;
+    }
+
+.dropdown-menu {
+    button {
+        border: 0px solid black;
+        border-radius: 5px;
+        background-color: $page-color;
+    }
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.not-active div {
+    background-color: $notactive;
+    color: $deactivated-ad;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+        height: 0px;
+    }
+    40% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        height: 350px;
+    }
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+        height: 350px;
+    }
+    40% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        height: 0px;
+    }
+}
+
+#filter-block {
+    opacity: 0;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-bg;
+    padding: $padding-sm;
+    margin-bottom: 10px;
+
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+}
+
+.non-active-ad {
+            background-color: $notactive;
+
+            div {
+                color: $notactive;
+            }
+            .ad-price {
+                display: none;
+            }
+        }
+
+#ad-block {
+    padding: $padding-std;
+    margin-left: 20%;
+    margin-right: 20%;
+
+    .ad-subblock {
+        background-color: $theme-color;
+        margin: $margin-sm;
+        border: 1px solid $border-color;
+        border-radius: $border-radius-sm;
+        padding: $padding-sm;
+    }
+
+    #ad-content {
+        padding: $padding-std;
+        .ad-attributes {
+            display: flex;
+
+            .ad-attr {
+            margin: 5px;
+            border: 1px solid $border-color;
+            border-radius: 4px;
+            padding: 5px;
+            }
+        }
+
+        .ad-title {
+        font-size: 30px;
+        }
+
+        .ad-description {
+            padding: $padding-std;
+        }
+
+        .ad-price {
+            padding: $padding-sm;
+        }
+    }
+
+    #ad-contact {
+        padding: $padding-std;
+        .contact-form {
+            padding: $padding-std;
+            border-radius: $border-radius-bg;
+        }
+        #author {
+            display: flex;
+            font-weight: bold;
+            div {
+                margin-left: $margin-std;
+                font-weight: normal;
+            }
+        }
+        #message-text {
+            margin: $margin-std;
+            border: 1px solid black;
+            border-radius: $border-radius-bg;;
+            padding: $padding-std;
+            width: 600px;
+            height: 100px;
+        }
+    }
+}
+
+
+
+.userdata {
+    background-color: $theme-color;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-sm;
+    margin: $margin-std;
+    padding: $padding-std;
+    width: auto;
+    //max-width: 50%;
+    div {
+        margin: 10px;
+    }
+}
+
+#profile-dialogs {
+    .dialog {
+        background-color: $theme-color;
+        border: 1px solid $border-color;
+        border-radius: $border-radius-sm;
+        margin: $margin-std;
+        padding: $padding-std;
+        width: auto;
+        .dialog-header {
+            display: flex;
+            .dialog-user {
+            }
+            .dialog-ad-title {
+            }
+            .dialog-ad-price {
+                font-weight: bold;
+            }
+        }
+        .dialog-header > div {
+            margin-right: 20px;
+        }
+        .dialog-header:hover{
+            font-size: 26px;
+            cursor: pointer;
+        }
+        .dialog-newmsg {
+            color: red;
+        }
+        .dialog-lastmsg {
+            margin: $margin-std;
+            margin-left: 20px;
+            font-size: $font-size-block-inner;
+            font-style: italic;
+        }
+        .dialog-datetime {
+            font-size: $font-size-datetime;
+            padding: 0px;
+        }
+    }
+}
+
+#profile-dialog {
+    margin: 5px auto;
+    width: 80%;
+    #messages {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid $border-color;
+        border-radius: $border-radius-bg;
+
+        .dialog-info {
+            font-size: $font-size-block-title;
+            padding: $padding-std;
+        }
+        #dialog-update {
+            margin: $margin-std;
+        }
+        .message {
+            border: 1px solid $border-color;
+            padding: $padding-sm;
+            margin: $margin-sm;
+            border-radius: $border-radius-bg;
+            .message-author {
+                font-size: $font-size-block-inner;
+            }
+            .message-text {
+                margin: $margin-sm;
+            }
+            .message-creation-date{
+                font-size: $font-size-datetime;
+            }
+        }
+        .user-message {
+            align-self: flex-end;
+            background-color: $userpostbg;
+        }
+        .not-user-message {
+            align-self: flex-start;
+            background-color: white;
+        }
+    }
+    #new-message {
+        margin: $margin-std;
+        padding: $padding-std;
+
+        #new-message-form {
+            display: flex;
+            flex-direction: column;
+
+            #id_text {
+                border: 1px solid $border-color;
+                border-radius: $border-radius-bg;
+                padding: $padding-std;
+                width: 600px;
+                height: 100px;
+            }
+
+            #send-message {
+                align-self: flex-end;
+            }
+        }
+    }
+}
+
+#create-block {
+    margin: $margin-std;
+    form {
+        div {
+            margin: $margin-std;
+
+        }
+    }
+}
+
+.page-pagination {
+    margin: $margin-std;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+        color: black;
+    }
+}
+
+#create-form {
+    margin: $margin-std;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: $border-radius-bg;
+    margin-left: 20%;
+    margin-right: 20%;
+    form th {
+        text-align: right;
+        padding-right: $padding-sm;
+    }
+
+    form td {
+        padding-left: $padding-sm;
+    }
+
+    input[type="submit"] {
+        margin-top: $padding-sm;
+    }
+}
+
+}
+
+@media (max-width: 599px) {
+
+$margin-std: 0px;
+$margin-sm: 5px;
+$padding-std: 5px;
+$padding-sm: 5px;
+$font-size: 16px;
+$font-size-block-title: 18px;
+$font-size-block-inner: 14px;
+$font-size-datetime: 14px;
+$font-size-span: 14px;
+$indentation: 0px;
+
+$theme-color: ghostwhite;
+$bgcolor: ghostwhite;
+$bgcolor-profile: khaki;
+$border-color: black;
+$ad-post-color: ghostwhite;
+$page-color: white;
+$userpostbg: lightblue;
+$notactive: lightgrey;
+
+$border-radius: 8px;
+$border-radius-sm: 8px;
+$border-radius-bg: 8px;
+$deactivated-ad: grey;
+
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.navbar-container {
+    display: flex;
+    background-color: white;
+    .navbar-expand-sm {
+        margin-left: auto;
+    }
+    .dropdown-toggle {
+        border: none;
+    }
+}
+
+.container {
+    background-color: $page-color;
+    padding: 0px;
+}
+
+.main-navbar div {
+    background-color: $theme-color;
+}
+
+.grid-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    .left-column, .right-column {
+
+    }
+    .center-column {
+        height: 100%;
+        width: 100%;
+        background-color: white;
+        .container {
+            background-color: $bgcolor;
+            border: 2px solid white;
+            border-radius: $border-radius-bg;
+            #profile-navbar {
+                border: 2px solid white;
+                border-radius: $border-radius-bg;
+            }
+        }
+    }
+}
+
+#login-page, #register-page {
+}
+
+#ads-block {
+    background-color: $page-color;
+    padding: $padding-sm;
+    padding-top: 0px;
+
+    #instrument {
+        display: grid;
+        //grid-column-gap: 20px;
+        grid-template-columns: auto auto;
+        justify-content: end;
+        #orderby {
+            margin: $margin-sm;
+            justify-self: right;
+            button {
+                background-color: $bgcolor;
+            }
+        }
+        #show-filter {
+            margin: $margin-sm;
+            justify-self: left;
+            background-color: $bgcolor;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+    }
+
+    #ads {
+
+        }
+}
+
+#orderby {
+    button {
+        background-color: $theme-color;
+    }
+}
+
+.ad-post {
+    background-color: $theme-color;
+    border-bottom: 2px solid grey;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    div {
+        padding: 5px;
+        font-size: $font-size-block-inner;
+    }
+    .ads-title {
+        text-transform: capitalize;
+        font-size: $font-size-block-title;
+        cursor: pointer;
+    }
+    .ads-description{
+        text-indent: $indentation;
+    }
+    .ads-price {
+        text-indent: $indentation;
+        font-weight: bold;
+    }
+    .ads-creation {
+        font-size: $font-size-datetime;
+        padding: 0px;
+        text-align: right;
+    }
+    .ads-save {
+    }
+    .no-image {
+       display: none;
+    }
+}
+
+#profile-saved .ad-post, #profile-ads .ad-post {
+    margin: $margin-std;
+    width: auto;
+    max-width: 100%;
+}
+
+.users-post {
+    background-color: $userpostbg;
+}
+
+.main-navbar {
+    background-color: $theme-color;
+}
+
+.main-navbar div {
+    background-color: $theme-color;
+}
+
+#profile-navbar {
+    background-color: $theme-color;
+    padding: $padding-sm;
+
+    span {
+        font-size: $font-size-span;
+        color: white;
+        background-color: grey;
+        border-radius: 4px 4px 4px 4px;
+        padding: 4px;
+        }
+    button {
+        padding: $padding-sm;
+        margin: $margin-std;
+        transition: none;
+        outline: none;
+        border: none;
+    }
+
+}
+
+.dropdown-toggle {
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: $page-color;
+    }
+
+.dropdown-menu {
+    button {
+        border: 0px solid black;
+        border-radius: 5px;
+        background-color: $page-color;
+    }
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.not-active div {
+    background-color: $notactive;
+    color: $deactivated-ad;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+        height: 0px;
+    }
+    40% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        height: 350px;
+    }
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+        height: 350px;
+    }
+    40% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        height: 0px;
+    }
+}
+
+#filter-block {
+    opacity: 0;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    padding: $padding-sm;
+    margin-bottom: 10px;
+
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+}
+
+.non-active-ad {
+            background-color: $notactive;
+            div {
+                color: $notactive;
+            }
+            .ad-price {
+                display: none;
+            }
+        }
+
+#ad-block {
+    padding: $padding-std;
+
+    .ad-subblock {
+        background-color: $theme-color;
+        margin: $margin-sm;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        padding: $padding-sm;
+    }
+
+    #ad-content {
+
+        .ad-attributes {
+            display: flex;
+
+            .ad-attr {
+            margin: 5px;
+            border: 1px solid $border-color;
+            border-radius: 4px;
+            padding: 5px;
+            }
+        }
+
+        .ad-title {
+        font-size: 30px;
+        }
+
+        .ad-description {
+            padding: $padding-std;
+        }
+
+        .ad-price {
+            padding: $padding-sm;
+        }
+    }
+
+    #ad-contact {
+        .contact-form {
+            padding: $padding-std;
+            border-radius: 5px;
+        }
+    }
+}
+
+.message, #new-message {
+    border: 1px solid $border-color;
+    padding: $padding-std;
+    margin: $margin-std;
+    border-radius: 5px;
+}
+
+#message-text {
+    border-radius: $border-radius-bg;
+}
+
+.userdata {
+    background-color: $theme-color;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-bg;
+    margin: $margin-std;
+    padding: $padding-std;
+    width: auto;
+    //max-width: 50%;
+    div {
+        margin: 10px;
+    }
+}
+
+#profile-dialogs {
+    .dialog {
+        background-color: $theme-color;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        margin: $margin-std;
+        padding: $padding-std;
+        width: auto;
+        //max-width: 50%;
+        .dialog-header {
+            display: flex;
+            .dialog-user {
+            }
+            .dialog-ad-title {
+            }
+            .dialog-ad-price {
+                font-weight: bold;
+            }
+        }
+        .dialog-header > div {
+            margin-right: 20px;
+        }
+        .dialog-header:hover{
+            cursor: pointer;
+        }
+        .dialog-newmsg {
+            color: red;
+        }
+        .dialog-lastmsg {
+            margin: $margin-std;
+            margin-left: 20px;
+            font-size: $font-size-block-inner;
+            font-style: italic;
+        }
+        .dialog-datetime {
+            font-size: $font-size-datetime;
+            padding: 0px;
+        }
+    }
+}
+
+#profile-dialog {
+    #messages {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid $border-color;
+        border-radius: $border-radius-bg;
+
+        .dialog-info {
+            font-size: $font-size-block-title;
+            padding: $padding-std;
+        }
+        #dialog-update {
+            margin: $margin-std;
+        }
+        .message {
+            border: 1px solid $border-color;
+            padding: $padding-sm;
+            margin: $margin-sm;
+            border-radius: $border-radius-bg;
+            .message-author {
+                font-size: $font-size-block-inner;
+            }
+            .message-text {
+                margin: $margin-sm;
+            }
+            .message-creation-date{
+                font-size: $font-size-datetime;
+            }
+        }
+        .user-message {
+            background-color: $userpostbg;
+        }
+        .not-user-message {
+            background-color: white;
+        }
+    }
+    #new-message {
+        margin: $margin-std;
+        padding: $padding-std;
+
+        #new-message-form {
+            display: flex;
+            flex-direction: column;
+
+            #id_text {
+                border: 1px solid $border-color;
+                border-radius: $border-radius-bg;
+                padding: $padding-std;
+                width: 400px;
+                height: 100px;
+            }
+            #send-message {
+                align-self: flex-end;
+            }
+        }
+    }
+}
+
+#create-block {
+    margin: $margin-std;
+    form {
+        div {
+            margin: $margin-std;
+        }
+    }
+}
+
+.page-pagination {
+    margin: $margin-std;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+        color: black;
+    }
+}
+
+}

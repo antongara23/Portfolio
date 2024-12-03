@@ -1,0 +1,63 @@
+<h5 id="filter-title">Filters:</h5>
+<form id="filter-form" action="{% url 'rental:main' %}">
+
+    {% if 'sorting' in request.GET %} {# Preserve sorting parameter #}
+        <input type="hidden" name="sorting" value="{{ request.GET.sorting }}">
+    {% endif %}
+
+    <input type="hidden" name="filter" value="true">
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">City</span>
+        </div>
+        <input name="city" class="form-control" list="cities" placeholder="All cities"
+                {% if 'filter' in request.GET %}
+                    {% if request.GET.city %}
+                    value="{{ request.GET.city.capitalize }}"
+                    {% endif %}
+                {% endif %}
+        >
+        <datalist id="cities">
+        </datalist>
+    </div>
+
+    <div class="option">
+        <label for="rooms" class="label">Rooms:</label>
+        <select id="rooms" name="rooms">
+            <option value="0" {% if 'filter' in request.GET and request.GET.rooms == "0" %} selected {% endif %}>All</option>
+            {% for num in "123" %}
+                <option value="{{ num }}" {% if 'filter' in request.GET and request.GET.rooms == num %} selected {% endif %}>{{ num }}</option>
+            {% endfor %}
+            <option value="4" {% if 'filter' in request.GET and request.GET.rooms == "4" %} selected {% endif %}>4 and more</option>
+        </select>
+    </div>
+
+    <div class="option">
+        <label for="pricefrom" class="label">Price from:</label>
+        <input id="pricefrom" type="text" name="pricefrom" placeholder="0.00"
+        {% if 'filter' in request.GET %}
+            {% if request.GET.pricefrom %}
+            value="{{ request.GET.pricefrom }}"
+            {% endif %}
+        {% endif %}>
+        <label for="priceto" class="label">Price to:</label>
+        <input id="priceto" type="text" name="priceto" placeholder="10000.00"
+        {% if 'filter' in request.GET %}
+            {% if request.GET.priceto %}
+            value="{{ request.GET.priceto }}"
+            {% endif %}
+        {% endif %}>
+    </div>
+
+    <div class="option">
+        <label for="furniture" class="label">Furniture:</label>
+        <select id="furniture" name="furniture">
+            <option value="-1" {% if 'filter' in request.GET and request.GET.furniture == "-1" %} selected {% endif %}>All</option>
+            <option value="1" {% if 'filter' in request.GET and request.GET.furniture == "1" %} selected {% endif %}>Yes</option>
+            <option value="0" {% if 'filter' in request.GET and request.GET.furniture == "0" %} selected {% endif %}>No</option>
+        </select>
+    </div>
+
+    <button id="filter-apply" type="submit" class="btn btn-secondary btn-sm">Apply</button>
+</form>

@@ -1,0 +1,76 @@
+{% extends "rental/layout.html" %}
+
+{% load static %}
+{% block script %}
+        <script src="{% static 'rental/profile.js' %}">
+        </script>
+        <script>
+            {% if section %}
+            var initial_section = "{{ section }}"
+            {% else %}
+            var initial_section = 0
+            {% endif %}
+            logged_user = "{{ request.user.username }}"
+        </script>
+{% endblock %}
+
+{% block body %}
+<div class="grid-container">
+    <div class="left-column"></div>
+    <div class="center-column">
+        <div class="container">
+            <nav id="profile-navbar" class="navbar navbar-light">
+              <form class="form-inline">
+                <button id="btn-userdata" class="btn profile-section shadow-none" type="button" data-section="profile-userdata">My Data</button>
+                <button id="btn-ads" class="btn profile-section shadow-none" type="button" data-section="profile-ads">My Ads</button>
+                <button id="btn-saved" class="btn profile-section shadow-none" type="button" data-section="profile-saved">Saved Ads
+                  <span class="label label-default">
+                      {{ user.saved.all|length }}
+                  </span>
+                </button>
+                <button id="btn-dialogs" class="btn profile-section shadow-none" type="button" data-section="profile-dialogs">Dialogs
+                    <span class="label label-default" style="display: none;"></span>
+                </button>
+                <button id="btn-refresh" class="btn" type="button">Refresh</button>
+              </form>
+            </nav>
+        </div>
+        <div class="container">
+            <div class="profile-body">
+                <div id="profile-userdata" class="userdata">
+                    <h5>Your data</h5>
+                    <div>Username: {{ user.username }}</div>
+                    <div>Email: {{ user.email }}</div>
+                    <div>Phone number: {{ user.mobile_phone }}</div>
+                    <div></div>
+                </div>
+
+                <div id="profile-ads">
+                    <div class="active"></div>
+                    <div class="not-active"></div>
+                </div>
+
+                <div id="profile-saved">
+                    <div class="active"></div>
+                    <div class="not-active"></div>
+                </div>
+
+                <div id="profile-dialogs">
+                </div>
+
+                <div id="profile-dialog">
+                    <div id="messages"></div>
+                    <div id="new-message">
+                        <form id="new-message-form">
+                            {{ new_message }}
+                            <button id="send-message" class="btn btn-secondary" type="submit" value="save">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-column"></div>
+</div>
+
+{% endblock %}

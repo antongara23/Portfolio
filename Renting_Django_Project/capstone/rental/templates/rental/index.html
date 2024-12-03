@@ -1,0 +1,100 @@
+{% extends "rental/layout.html" %}
+
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'rental/index.js' %}">
+    </script>
+    <script>
+        const ad_id_init = {{ ad_id }};
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div id="ads-block" style="display: none">
+        <h3 id="page-title"></h3>
+
+        <div id="instrument">
+            <div id="orderby" class="dropdown" style="justify-self: right;">
+              <button class="dropdown-toggle" type="button" id="dropdownSort" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <b>Sort by</b>: {{ sorting }}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownSort">
+                <button id="sort-newest" class="ordering dropdown-item" type="button" value="newest">Newest</button>
+                <button id="sort-price-asc" class="ordering dropdown-item" type="button" value="price_asc">Low to High</button>
+                <button id="sort-price-desc" class="ordering dropdown-item" type="button" value="price_desc">High to Low</button>
+              </div>
+            </div>
+
+           <button id="show-filter">Filters</button>
+        </div>
+
+        {% if 'filter' in request.GET %} {# Show filter if filter was applied #}
+        <div id="filter-block" class="filter" style="animation-play-state: running;">
+            {% include "rental/filter.html" %}
+        </div>
+        {% else %}
+        <div id="filter-block" class="filter" style="display: none;">
+            {% include "rental/filter.html" %}
+        </div>
+        {% endif%}
+
+        <div id="ads">
+        {% for ad in page_obj %}
+            <div id="ad-{{ ad.id }}" class="ad-post {% if user.is_authenticated and user == ad.user %}users-post{% endif %}">
+                <div class="media">
+                        {% if ad.image %}
+                            <img src="{{ ad.image.url }}" alt="Ad Image" class="img-thumbnail align-self-start mr-3" style="max-width: 300; max-height: 169px; width: auto; height: auto;" >
+                        {% else %}
+                            <div class="no-image img-thumbnail">No Image</div>
+                        {% endif %}
+                    <div class="media-body">
+                        <div class="ads-header row mt-0">
+                          <div class="ads-title col-sm-9">{{ ad.title }}  |  <b>{{ ad.city }}</b></div>
+                          <div class="col-sm-3">
+                              {% if user.is_authenticated and user != ad.user %}
+                              <button class="ads-save btn btn-secondary btn-sm" style="display: none">Save</button>
+                              {% endif %}
+                          </div>
+                        </div>
+                        <div class="ads-description">{{ ad.description|slice:":40" }}{% if ad.description|length > 40 %}...{% endif %}</div>
+                        <div class="ads-price">Price $: {{ ad.price }}</div>
+                    </div>
+                </div>
+
+                <div class="ads-creation">Posted by {{ ad.user }}: {{ ad.creation_date }}</div>
+                {% if ad.update_date %}
+                <div class="ads-creation">Updated: {{ ad.update_date }}</div>
+                {% endif %}
+            </div>
+        {% empty %}
+        <div id="posts-empty">No posts.</div>
+        {% endfor %}
+        </div>
+        {% include "rental/pagination.html" %}
+    </div>
+
+    <div id="ad-block" style="display: none">
+        <div>
+            <div id="ad-content" class="ad-subblock">
+            </div>
+            {% if user.is_authenticated %}
+            <div id="ad-contact" class="ad-subblock">
+                <button id="show-message" class="btn btn-secondary btn-sm">Contact</button>
+                <div class="contact-form" style="display: none;">
+                    <div id="message-window">
+                        <div id="author"></div>
+                        <form id="send-message-form">
+                            <textarea id="message-text" placeholder="Send Message" autofocus></textarea>
+                            <div>
+                                <button id="message-send" class="btn btn-secondary" type="submit">Send</button>
+                                <div id="message-status"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

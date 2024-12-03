@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>USRental</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link href="{% static 'rental/styles.css' %}" rel="stylesheet">
+        <script src="{% static 'rental/layout.js' %}"></script>
+        {% block script %}
+        {% endblock %}
+        {% block style %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="navbar-container">
+            <nav class="navbar navbar-expand-sm navbar-light">
+                <a id="main-title" class="navbar-brand" href="{% url 'rental:main' %}">USRental</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="collapsibleNavbar" class="collapse navbar-collapse">
+                  <ul class="navbar-nav mr-auto">
+                        <li id="my-profile" class="nav-item">
+                            <div class="dropdown show">
+                                {% if user.is_authenticated %}
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <strong>{{ user.username }}</strong>
+                                </a>
+                                {% else %}
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <strong>My profile</strong>
+                                </a>
+                                {% endif %}
+                                <div class="dropdown-menu" aria-labelledby="dropdownProfile">
+                                    {% if user.is_authenticated %}
+                                    <a class="dropdown-item" href="{% url 'rental:profile' %}">My profile</a>
+                                    <a class="dropdown-item" href="{% url 'rental:logout' %}">Log out</a>
+                                    {% else %}
+                                    <a class="dropdown-item" href="{% url 'rental:login' %}">Log in</a>
+                                    <a class="dropdown-item" href="{% url 'rental:register' %}">Register</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </li>
+                    <li class="nav-item">
+                      <a id="all-ads" class="nav-link" href="{% url 'rental:main' %}">All ads</a>
+                    </li>
+                    <li class="nav-item">
+                      <a id="create-ad" class="nav-link" href="{% url 'rental:create' %}">Create ad</a>
+                    </li>
+                  </ul>
+                </div>
+            </nav>
+        </div>
+            {% block body %}
+            {% endblock %}
+    </body>
+</html>

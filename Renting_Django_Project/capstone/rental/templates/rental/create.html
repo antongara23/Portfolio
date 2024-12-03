@@ -1,0 +1,54 @@
+{% extends "rental/layout.html" %}
+
+{% load static %}
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let city = document.querySelector('#id_city');
+            console.log(city);
+            city.setAttribute('list', 'cities');
+
+            let parent = city.parentNode;
+            let datalist = document.createElement('datalist');
+            datalist.id = 'cities';
+            parent.appendChild(datalist);
+
+            // Function implemented in the layout.js file.
+            getCities("united states").then(data => {
+                const cities = data;
+                console.log(data);
+
+                let datalist = document.querySelector("#cities");
+                // Add each city as an option
+                cities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    datalist.appendChild(option);
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block style %}
+{% endblock %}
+
+{% block body %}
+    <div id="create-form">
+        <h5>Create New Ad</h5>
+        <form id=ad-form method="post" enctype="multipart/form-data" action={% if edit %}"{% url 'rental:edit' ad_id %}"{% else %}"{% url 'rental:create' %}"{% endif %}>
+            {% csrf_token %}
+            <table>
+            {{ form.as_table }}
+                <tr>
+                    <th><label for="submit-form"></label></th>
+                    <td style="display: flex; justify-content: flex-end;">
+                        <input id="submit-form" type="submit" value="Submit" class="btn btn-secondary">
+                    </td>
+                  </tr>
+            </table>
+
+        </form>
+    </div>
+
+{% endblock %}
