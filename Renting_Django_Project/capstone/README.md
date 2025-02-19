@@ -1,5 +1,9 @@
 # RENTAL
 
+By Anton Horakh
+
+Video overview: https://youtu.be/47ZaDRY3vpQ
+
 ## Distinctiveness and Complexity
 
 ### General Description 
